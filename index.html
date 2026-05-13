@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Роднина Полина | Портфолио графического дизайнера</title>
+    <!-- Google Fonts: современные шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (бесплатные иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fefcf5;
+            font-family: 'Inter', sans-serif;
+            color: #1e1b1a;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        /* кастомный скролл */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9e2d4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7a575;
+            border-radius: 3px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* типографика */
+        h1, h2, h3, .logo, .nav-links a, .btn {
+            font-family: 'Space Grotesk', monospace;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #1e1b1a 0%, #5f3b2c 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #d9b48b;
+            border-radius: 4px;
+        }
+
+        /* навигация */
+        header {
+            padding: 28px 0 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: #1e1b1a;
+            background: linear-gradient(145deg, #2d2a28, #0f0e0c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.03em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c2b2a;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #b57c48;
+        }
+
+        /* кнопки */
+        .btn {
+            display: inline-block;
+            background: #1e1b1a;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.25s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #1e1b1a;
+            color: #1e1b1a;
+        }
+        .btn-outline:hover {
+            background: #1e1b1a;
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -12px rgba(0,0,0,0.2);
+            background: #3a2c24;
+        }
+
+        /* hero секция */
+        .hero {
+            padding: 80px 0 60px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-content {
+            flex: 1.2;
+        }
+        .hero-badge {
+            background: #f0e7dd;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #7a4c2c;
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            margin: 24px 0 32px;
+            color: #3a3532;
+            max-width: 90%;
+            line-height: 1.5;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 30px;
+        }
+        .stat-item h3 {
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+        .hero-avatar {
+            flex: 0.8;
+            background: linear-gradient(145deg, #e7dfd3, #f5efe7);
+            border-radius: 48% 52% 70% 30% / 40% 45% 55% 60%;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 25px 35px -15px rgba(0,0,0,0.1);
+        }
+        .hero-avatar img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 38% 62% 64% 36% / 43% 41% 59% 57%;
+            object-fit: cover;
+        }
+
+        /* работы / галерея */
+        .section {
+            padding: 80px 0;
+        }
+        .filter-grid {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 8px 20px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            color: #4a3e38;
+        }
+        .filter-btn.active {
+            background: #1e1b1a;
+            color: white;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+        }
+        .project-img {
+            width: 100%;
+            height: 260px;
+            background-color: #e5dbcf;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.02);
+        }
+        .project-info {
+            padding: 22px 20px 24px;
+        }
+        .project-cat {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b57c48;
+            font-weight: 600;
+        }
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 8px 0 6px;
+        }
+        .project-desc {
+            color: #5f5a56;
+            font-size: 0.9rem;
+        }
+
+        /* навыки */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .skills-soft, .skills-tools {
+            flex: 1;
+            background: #ffffffd9;
+            padding: 28px;
+            border-radius: 48px;
+            background: rgba(255, 253, 245, 0.8);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .skill-tag {
+            display: inline-block;
+            background: #f0e7df;
+            margin: 8px 10px 0 0;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .progress-item {
+            margin-bottom: 24px;
+        }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .progress-bar {
+            background: #e3d9cf;
+            border-radius: 20px;
+            height: 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: #c7a070;
+            width: 0%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        /* контакт */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            background: #f9f5ed;
+            padding: 48px;
+            border-radius: 64px;
+            margin-top: 20px;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        input, textarea {
+            background: white;
+            border: 1px solid #e2d6ca;
+            padding: 16px 22px;
+            border-radius: 48px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.2s;
+        }
+        textarea {
+            border-radius: 32px;
+            resize: vertical;
+        }
+        input:focus, textarea:focus {
+            border-color: #c7a070;
+            box-shadow: 0 0 0 3px rgba(199, 160, 112, 0.2);
+        }
+        .social-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 28px;
+        }
+        .social-links a {
+            background: #e7dfd3;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #2c241f;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            background: #c7a070;
+            color: white;
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #ece3d8;
+            margin-top: 40px;
+            color: #7f7368;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                padding: 0 24px;
+            }
+            .hero {
+                flex-direction: column;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .contact-flex {
+                padding: 28px;
+            }
+            .navbar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">✦ MASYANYA</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero / Home -->
+    <section id="home">
+        <div class="container hero">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-palette"></i> графический дизайнер & визионер</div>
+                <h1>Визуальные истории, <br>которые вдохновляют</h1>
+                <p class="hero-desc">Привет! Я Полина — графический дизайнер с фокусом на брендинг, типографику и цифровое искусство. Превращаю сложные идеи в лаконичный, эстетичный дизайн.</p>
+                <a href="#portfolio" class="btn">Смотреть работы <i class="fas fa-arrow-right"></i></a>
+                <div class="hero-stats">
+                    <div class="stat-item"><h3>1+</h3><p>лет опыта</p></div>
+                    <div class="stat-item"><h3>50+</h3><p>проектов</p></div>
+                    <div class="stat-item"><h3>15</h3><p>счастливых клиентов</p></div>
+                </div>
+            </div>
+            <div class="hero-avatar">
+                <!-- абстрактная иллюстрация-плейсхолдер (можно заменить на своё фото) -->
+                <img src="c:\Users\Полина\Downloads\Слой 1.png" alt="c:\Users\Полина\Downloads\Фон копия.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио с фильтрацией (JavaScript) -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2>Избранные проекты</h2>
+            <div class="filter-grid" id="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все работы</button>
+                <button class="filter-btn" data-filter="branding">Брендинг</button>
+                <button class="filter-btn" data-filter="poster">Постеры</button>
+                <button class="filter-btn" data-filter="digital">Digital art</button>
+            </div>
+            <div class="gallery" id="gallery-container">
+                <!-- проекты будут динамически подгружены через JS, но для статики встроим данные -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Навыки и инструменты -->
+    <section id="skills" class="section" style="background: #fef9f0;">
+        <div class="container">
+            <h2>Профессиональные навыки</h2>
+            <div class="skills-container">
+                <div class="skills-tools">
+                    <h3><i class="fas fa-laptop-code"></i> Инструменты</h3>
+                    <div><span class="skill-tag">Adobe Photoshop</span><span class="skill-tag">Illustrator</span><span class="skill-tag">InDesign</span><span class="skill-tag">Figma</span><span class="skill-tag">After Effects</span><span class="skill-tag">Procreate</span></div>
+                    <h3 style="margin-top: 30px;"><i class="fas fa-crown"></i> Софт скилы</h3>
+                    <div><span class="skill-tag">Креативное мышление</span><span class="skill-tag">Тайм-менеджмент</span><span class="skill-tag">Коммуникация</span><span class="skill-tag">Внимание к деталям</span></div>
+                </div>
+                <div class="skills-soft">
+                    <h3><i class="fas fa-chart-line"></i> Экспертиза</h3>
+                    <div class="progress-item"><div class="progress-label"><span>Брендинг & Айдентика</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
+                    <div class="progress-item"><div class="progress-label"><span>Векторная графика</span><span>92%</span></div><div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div></div>
+                    <div class="progress-item"><div class="progress-label"><span>UI/UX дизайн</span><span>88%</span></div><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div></div>
+                    <div class="progress-item"><div class="progress-label"><span>Motion design</span><span>78%</span></div><div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная форма -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Давайте создадим что-то великое</h2>
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;"><i class="fas fa-envelope"></i> hello@MASYANYA.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Красноярск</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div style="margin-top: 36px;">
+                        <p><i class="fas fa-clock"></i> Отвечаю в течение 24 часов</p>
+                        <p><i class="fas fa-hand-peace"></i> Готова к коллаборациям и фриланс-проектам</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Полина" required>
+                    <input type="email" placeholder="kentokatm@gmail.com" required>
+                    <textarea rows="4" placeholder="Расскажите о вашей идее или проекте..."></textarea>
+                    <button type="submit" class="btn" style="align-self: flex-start;">Отправить запрос →</button>
+                    <p id="formMessage" style="font-size:0.8rem; color:#b57c48;"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Роднина Полина — графический дизайн. Все права защищены. ✦</p>
+    </div>
+</footer>
+
+<script>
+    // Массив проектов портфолио
+    const projectsData = [
+        { id: 1, title: "Эстетика бренда «Gameln Gray»", category: "branding", desc: "Айдентика, упаковка и визуальный язык для авангардного бренда одежды.", image: "C:\Users\Полина\Downloads\2026-05-13_22-27-57.png" },
+        { id: 2, title: "Плакат «Мария Антуанетта»", category: "poster", desc: "Экспериментальный постер, типографика + коллаж.", image: "c:\Users\Полина\Downloads\1классицизм 1.png" },
+        { id: 3, title: "Digital арт «Дейенерис Таргариен»", category: "digital", desc: "Серия абстрактных работ для NFT-галереи.", image: "c:\Users\Полина\Downloads\2Я.png" },
+     
+    ];
+
+    const galleryContainer = document.getElementById('gallery-container');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function renderProjects(filter = 'all') {
+        let filteredProjects = projectsData;
+        if (filter !== 'all') {
+            filteredProjects = projectsData.filter(proj => proj.category === filter);
+        }
+        let html = '';
+        filteredProjects.forEach(project => {
+            html += `
+                <div class="project-card" data-category="${project.category}">
+                    <div class="project-img" style="background-image: url('${project.image}'); background-size: cover; background-position: center;"></div>
+                    <div class="project-info">
+                        <div class="project-cat">${project.category === 'branding' ? 'Брендинг' : (project.category === 'poster' ? 'Постер/Графика' : 'Digital арт')}</div>
+                        <div class="project-title">${project.title}</div>
+                        <div class="project-desc">${project.desc}</div>
+                    </div>
+                </div>
+            `;
+        });
+        if(filteredProjects.length === 0) {
+            galleryContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px;">Проектов в этой категории пока нет, но скоро появятся ✨</div>`;
+        } else {
+            galleryContainer.innerHTML = html;
+        }
+    }
+
+    // инициализация фильтрации
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filterValue = btn.getAttribute('data-filter');
+            renderProjects(filterValue);
+        });
+    });
+
+    renderProjects('all');
+
+    // Обработка контактной формы с простой валидацией
+    const contactForm = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameInput = contactForm.querySelector('input[type="text"]');
+        const emailInput = contactForm.querySelector('input[type="email"]');
+        const msgText = contactForm.querySelector('textarea');
+        
+        if(nameInput.value.trim() === '' || emailInput.value.trim() === '' || msgText.value.trim() === '') {
+            formMsg.innerText = '❌ Пожалуйста, заполните все поля.';
+            formMsg.style.color = '#c16f47';
+            return;
+        }
+        if(!emailInput.value.includes('@') || !emailInput.value.includes('.')) {
+            formMsg.innerText = '✉️ Введите корректный email.';
+            formMsg.style.color = '#c16f47';
+            return;
+        }
+        formMsg.innerText = '✅ Спасибо! Я свяжусь с вами в ближайшее время.';
+        formMsg.style.color = '#6a8e6e';
+        contactForm.reset();
+        setTimeout(() => {
+            formMsg.innerText = '';
+        }, 5000);
+    });
+
+    // плавный скролл для навигации
+    document.querySelectorAll('.nav-links a, .btn[href="#portfolio"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if(href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if(targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
